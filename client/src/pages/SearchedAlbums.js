@@ -1,8 +1,8 @@
-import { savedAlbumIds, getSavedAlbumIds } from '../utils/localStorage';
-import { SAVE_ALBUM } from '../utils/mutations';
-import { useMutation } from '@apollo/react-hooks';
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
+import { saveAlbumIds, getSavedAlbumIds } from '../utils/localStorage';
+import { SAVE_ALBUM } from '../utils/mutations';
+import { useMutation } from '@apollo/react-hooks';
 
 import Auth from '../utils/auth';
 
@@ -85,7 +85,7 @@ const SearchedAlbums = () => {
     <>
       <Jumbotron fluid className='text-light bg-dark'>
         <Container>
-          <h1>Bring Yout Top 3 Albums!</h1>
+          <h1>Bring Your Top Albums!</h1>
           <Form onSubmit={handleFormSubmit}>
             <Form.Row>
               <Col xs={12} md={8}>
@@ -95,7 +95,7 @@ const SearchedAlbums = () => {
                   onChange={(e) => setSearchInput(e.target.value)}
                   type='text'
                   size='lg'
-                  placeholder='Sample Album Name'
+                  placeholder='Abbey Road'
                 />
               </Col>
               <Col xs={12} md={4}>
