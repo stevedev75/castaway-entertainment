@@ -4,18 +4,13 @@ import { saveAlbumIds, getSavedAlbumIds } from '../utils/localStorage';
 import { SAVE_ALBUM } from '../utils/mutations';
 import { useMutation } from '@apollo/react-hooks';
 
+
 import Auth from '../utils/auth';
-
-
-
 
 //Use the Apollo useMutation() Hook to execute the SAVE_ALBUM mutation
 
-
-
 const SearchedAlbums = () => {
-
- 
+  const [searchedAlbums, setSearchedAlbums] = useState([]);
  
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
@@ -25,24 +20,22 @@ const SearchedAlbums = () => {
 
   const [saveAlbum, { error }] = useMutation(SAVE_ALBUM)
 
-  // set up useEffect hook to save `savedAlbumIds` list to localStorage on component unmount
-  // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
+ 
   useEffect(() => {
     return () => saveAlbumIds(savedAlbumIds);
   });
 
 
-  {/*}
-
-  // create method to search for albums and set state on form submit
-
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+    
     if (!searchInput) {
       return false;
     }
+
+    try {
+      const response = await saveAlbum(searchInput);
 
       if (!response.ok) {
         throw new Error('something went wrong!');
@@ -50,13 +43,27 @@ const SearchedAlbums = () => {
 
       const { items } = await response.json();
 
-     
-*/}
+    const albumData = items.map((album) => ({
+      albumId: album.id,
+      title: album.title     
+    }));
+
+    setSearchedAlbums(albumData);
+    setSearchInput('');
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+
+
+
+
 
   // create function to handle saving an Album to our database
-  const handleSaveAlbum = async (AlbumId) => {
+  const handleSaveAlbum = async (albumId) => {
     // find the album in `searchedAlbums` state by the matching id
-    const AlbumToSave = searchedAlbums.find((album) => album.albumId === albumId);
+    const albumToSave = searchedAlbums.find((album) => album.albumId === albumId);
 
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -108,7 +115,6 @@ const SearchedAlbums = () => {
         </Container>
       </Jumbotron>
 
-{/* FROM HERE TO THE END NEEDS CRITICAL REVIEW AND CHANGES!!! */}
 
       <Container>
         <h2>
@@ -120,13 +126,11 @@ const SearchedAlbums = () => {
           {searchedAlbums.map((album) => {
             return (
               <Card key={album.albumId} border='dark'>
-           {/*     {book.image ? (
-                  <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' />
-           ) : null} */}
+         
                 <Card.Body>
                   <Card.Title>{album.title}</Card.Title>
                   <p className='small'>Title: {album.title}</p>
-           {/*       <Card.Text>{book.description}</Card.Text> */}
+
                   {Auth.loggedIn() && (
                     <Button
                       disabled={savedAlbumIds?.some((savedAlbumId) => savedAlbumId === album.albumId)}
@@ -146,5 +150,4 @@ const SearchedAlbums = () => {
     </>
   );
 };
-
-export default SearchedAlbums;
+export default SearchedAlbums; 
