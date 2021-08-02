@@ -1,21 +1,20 @@
+import { savedAlbumIds, getSavedAlbumIds } from '../utils/localStorage';
+import { SAVE_ALBUM } from '../utils/mutations';
+import { useMutation } from '@apollo/react-hooks';
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 
 import Auth from '../utils/auth';
 
-{/*import { searchGoogleBooks } from '../utils/API'; */}
 
-import { savedAlbumIds, getSavedAlbumIds } from '../utils/localStorage';
 
-//Use the Apollo useMutation() Hook to execute the SAVE_Album mutation
 
-import { SAVE_ALBUM } from '../utils/mutations';
-import { useMutation } from '@apollo/react-hooks';
+//Use the Apollo useMutation() Hook to execute the SAVE_ALBUM mutation
+
+
 
 const SearchedAlbums = () => {
- 
- {/*}   // create state for holding returned google api data
-const [searchedBooks, setSearchedBooks] = useState([]); */}
+
  
  
   // create state for holding our search field data
@@ -45,29 +44,13 @@ const [searchedBooks, setSearchedBooks] = useState([]); */}
       return false;
     }
 
-    try {
-      const response = await searchGoogleBooks(searchInput);
-
       if (!response.ok) {
         throw new Error('something went wrong!');
       }
 
       const { items } = await response.json();
 
-      const bookData = items.map((book) => ({
-        bookId: book.id,
-        authors: book.volumeInfo.authors || ['No author to display'],
-        title: book.volumeInfo.title,
-        description: book.volumeInfo.description,
-        image: book.volumeInfo.imageLinks?.thumbnail || '',
-      }));
-
-      setSearchedBooks(bookData);
-      setSearchInput('');
-    } catch (err) {
-      console.error(err);
-    }
-  };
+     
 */}
 
   // create function to handle saving an Album to our database
