@@ -63,8 +63,10 @@ const SearchedAlbums = () => {
   // create function to handle saving an Album to our database
   const handleSaveAlbum = async (albumId) => {
     // find the album in `searchedAlbums` state by the matching id
-    const albumToSave = searchedAlbums.find((album) => album.albumId === albumId);
+    console.log(albumId);
 
+    const albumToSave = searchedAlbums.find((album) => album.albumId === albumId);
+    console.log(albumToSave)
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -83,17 +85,19 @@ const SearchedAlbums = () => {
       console.log("Album:", data)
       // if album successfully saves to user's account, save album id to state
       setSavedAlbumIds([...savedAlbumIds, albumToSave.albumId]);
-    } catch (err) {
+    } 
+    catch (err) {
       console.error(err);
     }
   };
 
   return (
     <>
-      <Jumbotron fluid className='text-light bg-dark'className="text-center">
-        <Container>
+      <Jumbotron fluid className='text-light bg-dark'>
+        <Container className="text-center">
           <h1>CASTAWAY ENTERTAINMENT</h1>
           <h2>Pack Your Top Albums!</h2>
+          
           <Form onSubmit={handleFormSubmit}>
             <Form.Row>
               <Col xs={12} md={12}>
@@ -125,7 +129,7 @@ const SearchedAlbums = () => {
             ? `Viewing ${searchedAlbums.length} results:`
             : 'Enter an album to begin..'}
         </h2>
-        <h2> You are headed on a trip, but you can only bring a tiny bit with you. Little do you know that soon you will be a castaway on a deserted island. Pack wisely - these are the only pieces of music you will be able to listen to until you are rescued!</h2>
+        <h2> You are headed on a trip, but you can only bring a tiny bit with you. Little do you know that soon you will be a castaway on a deserted island. Pack wisely - these are the only pieces of music you will be able to listen to via the island's magic technology...until you are rescued!</h2>
         <CardColumns>
           {searchedAlbums.map((album) => {
             return (

@@ -43,7 +43,7 @@ const SavedAlbums = () => {
 
   return (
     <>
-        <Jumbotron fluid className='text-light bg-dark'className="text-center">
+        <Jumbotron fluid className='text-light bg-dark text-center'>
         <Container>
           <h1>Viewing saved albums!</h1>
         </Container>
