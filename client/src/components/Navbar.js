@@ -12,11 +12,12 @@ const AppNavbar = () => {
 
   return (
     <>
-      <Navbar bg='dark' color='blue' variant='dark' expand='lg'>
+      <Navbar bg='primary' variant='dark' expand='lg' color='blue'
+      style={{backgroundColor: '#3b7bf4'}}>
         <Container fluid>
-          <Navbar.Brand as={Link} to='/'>
+       {/*}   <Navbar.Brand as={Link} to='/'>
             Castaway Entertainment
-          </Navbar.Brand>
+  </Navbar.Brand> */}
           <Navbar.Toggle aria-controls='navbar' />
           <Navbar.Collapse id='navbar'>
             <Nav className='ml-auto'>
@@ -26,7 +27,7 @@ const AppNavbar = () => {
     rather than in the actual Navbar) */}
 
  {/*             <Nav.Link as={Link} to='/'>
-                Search For Books
+                Search For Albums
 </Nav.Link>                       */ }
 
 
@@ -35,12 +36,12 @@ const AppNavbar = () => {
               {Auth.loggedIn() ? (
                 <>
                   <Nav.Link as={Link} to='/saved'>
-                    See Your Saved Entertainment
+                    Saved Entertainment
                   </Nav.Link>
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>
               ) : (
-                <Nav.Link onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
+                <Nav.Link onClick={() => setShowModal(true)}>Sign In / Sign Up</Nav.Link>
               )}
             </Nav>
           </Navbar.Collapse>
@@ -58,7 +59,7 @@ const AppNavbar = () => {
             <Modal.Title id='signup-modal'>
               <Nav variant='pills'>
                 <Nav.Item>
-                  <Nav.Link eventKey='login'>Login</Nav.Link>
+                  <Nav.Link eventKey='login'>Sign In</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link eventKey='signup'>Sign Up</Nav.Link>

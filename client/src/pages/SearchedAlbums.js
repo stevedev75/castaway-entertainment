@@ -90,24 +90,27 @@ const SearchedAlbums = () => {
 
   return (
     <>
-      <Jumbotron fluid className='text-light bg-dark'>
+      <Jumbotron fluid className='text-light bg-dark'className="text-center">
         <Container>
-          <h1>Bring Your Top Albums!</h1>
+          <h1>CASTAWAY ENTERTAINMENT</h1>
+          <h2>Pack Your Top Albums!</h2>
           <Form onSubmit={handleFormSubmit}>
             <Form.Row>
-              <Col xs={12} md={8}>
-                <Form.Control
+              <Col xs={12} md={12}>
+                <Form.Control 
                   name='searchInput'
                   value={searchInput}
                   onChange={(e) => setSearchInput(e.target.value)}
                   type='text'
                   size='lg'
-                  placeholder='Abbey Road'
+                  placeholder='Abbey Road by The Beatles'
                 />
+                <br></br>
               </Col>
-              <Col xs={12} md={4}>
-                <Button type='submit' variant='success' size='lg'>
-                  Save
+              <Col xs={12} md={12}>
+                <Button type='submit' variant='success' size='lg'
+                style={{backgroundColor: '#2acaea', borderColor: '#45A293', color: '#000000'}}>
+                  Pack
                 </Button>
               </Col>
             </Form.Row>
@@ -117,11 +120,12 @@ const SearchedAlbums = () => {
 
 
       <Container>
-        <h2>
+        <h2 className='text-center'>
           {searchedAlbums.length
             ? `Viewing ${searchedAlbums.length} results:`
-            : 'Enter an album to begin'}
+            : 'Enter an album to begin..'}
         </h2>
+        <h2> You are headed on a trip, but you can only bring a tiny bit with you. Little do you know that soon you will be a castaway on a deserted island. Pack wisely - these are the only pieces of music you will be able to listen to until you are rescued!</h2>
         <CardColumns>
           {searchedAlbums.map((album) => {
             return (
