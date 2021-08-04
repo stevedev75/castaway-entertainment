@@ -35,11 +35,14 @@ const SearchedAlbums = () => {
     }
 
     try {
-      const response = await saveAlbum(searchInput);
+    const options = { variables: {title: searchInput } }
+    
+      const response = await saveAlbum(options);
+      console.log(response.ok);
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+      // if (!response.ok) {
+      //   throw new Error('something went wrong!');
+      // }
 
       const { items } = await response.json();
 
@@ -98,7 +101,7 @@ const SearchedAlbums = () => {
           <h1>CASTAWAY ENTERTAINMENT</h1>
           <h2>Pack Your Top Albums!</h2>
           
-          <Form onSubmit={handleFormSubmit}>
+          <Form  onSubmit={handleFormSubmit}>
             <Form.Row>
               <Col xs={12} md={12}>
                 <Form.Control 
