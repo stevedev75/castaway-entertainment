@@ -37,8 +37,8 @@ export const ADD_USER = gql`
 `;
 
 export const SAVE_ALBUM = gql`
-  mutation saveAlbum($input: albumInput!) {
-    saveAlbum(input: $input) {
+  mutation saveAlbum($title: String!) {
+    saveAlbum(title: $title) {
       _id
       username
       email
