@@ -17,17 +17,14 @@ const typeDefs = gql`
         token: ID!
         user: User
     }
-    input albumInput {
-        albumId: String
-        title: String
-    }
+    
     type Query {
         me: User
     }
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        saveAlbum(input: albumInput): User
+        saveAlbum(title: String!): User
         removeAlbum(albumId: String!): User
     }
 `;
