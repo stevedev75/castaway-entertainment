@@ -37,14 +37,14 @@ const SearchedAlbums = () => {
     try {
     const options = { variables: {title: searchInput } }
     
-      const response = await saveAlbum(options);
-      console.log(response.ok);
+    const response = await saveAlbum(options);
+    console.log(response.ok);
 
       // if (!response.ok) {
       //   throw new Error('something went wrong!');
       // }
 
-      const { items } = await response.json();
+    const { items } = await response.json();
 
     const albumData = items.map((album) => ({
       albumId: album.id,
@@ -96,8 +96,9 @@ const SearchedAlbums = () => {
 
   return (
     <>
-      <Jumbotron fluid className='text-light bg-dark'>
-        <Container className="text-center">
+      <Jumbotron fluid className='text-light bg-light'>
+        <Container className="text-center"
+          style={{backgroundColor: '#D5DBDB', borderColor: '#45A293', color: '#000000'}}>
           <h1>CASTAWAY ENTERTAINMENT</h1>
           <h2>Pack Your Top Albums!</h2>
           
