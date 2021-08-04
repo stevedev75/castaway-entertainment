@@ -100,7 +100,7 @@ const SearchedAlbums = () => {
         <Container className="text-center"
           style={{backgroundColor: '#D5DBDB', borderColor: '#45A293', color: '#000000'}}>
           <h1>CASTAWAY ENTERTAINMENT</h1>
-          <h2>Pack Your Top Albums!</h2>
+          <h2>Pack Your Top Music!</h2>
           
           <Form  onSubmit={handleFormSubmit}>
             <Form.Row>
@@ -131,7 +131,7 @@ const SearchedAlbums = () => {
         <h2 className='text-center'>
           {searchedAlbums.length
             ? `Viewing ${searchedAlbums.length} results:`
-            : 'Sign up or Sign In! Then pack some music to begin..'}
+            : 'Sign up or Sign In! Then pack some music to begin.'}
         </h2>
         <h2> You are headed on a trip, but you can only bring a tiny bit with you. Little do you know that soon you will be a castaway on a deserted island. Pack wisely - these are the only pieces of music you will be able to listen to via the island's magic technology.</h2>
         <CardColumns>
