@@ -12,24 +12,14 @@ const AppNavbar = () => {
 
   return (
     <>
-      <Navbar bg='primary' variant='dark' expand='lg' color='blue'
-      style={{backgroundColor: '#3b7bf4'}}>
+      <Navbar variant='light' expand='lg'
+        style={{ backgroundColor: '#2acaea', borderColor: '#45A293', color: '#000000' }}>
+
         <Container fluid>
-       {/*}   <Navbar.Brand as={Link} to='/'>
-            Castaway Entertainment
-  </Navbar.Brand> */}
+
           <Navbar.Toggle aria-controls='navbar' />
           <Navbar.Collapse id='navbar'>
             <Nav className='ml-auto'>
-
-{/* remove the search function below and add a form to collect the top 3 songs
-    OR it would probably be better to put 3 forms (albums, movies, TV) in the middle of the page
-    rather than in the actual Navbar) */}
-
- {/*             <Nav.Link as={Link} to='/'>
-                Search For Albums
-</Nav.Link>                       */ }
-
 
 
               {/* if user is logged in show saved 'items' and logout */}
