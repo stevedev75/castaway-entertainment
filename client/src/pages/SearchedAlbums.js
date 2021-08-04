@@ -35,19 +35,21 @@ const SearchedAlbums = () => {
     }
 
     try {
-    const options = { variables: {title: searchInput } }
-    
+    const options = { variables: {title: searchInput, albumId: '1'} }
+    console.log(options);
+
     const response = await saveAlbum(options);
-    console.log(response.ok);
+  
+    console.log(response);
 
       // if (!response.ok) {
       //   throw new Error('something went wrong!');
       // }
 
-    const { items } = await response.json();
-
+    const items = response.data.saveAlbum.savedAlbums;
+  console.log(items);
     const albumData = items.map((album) => ({
-      albumId: album.id,
+     
       title: album.title     
     }));
 
