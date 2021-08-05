@@ -137,9 +137,9 @@ const SearchedAlbums = () => {
         </h2>
         <h2> You are headed on a trip, but you can only bring a tiny bit with you. Little do you know that soon you will be a castaway on a deserted island. Pack wisely - these are the only pieces of music you will be able to listen to via the island's magic technology.</h2>
         <CardColumns>
-          {searchedAlbums.map((album) => {
+          {searchedAlbums.map((album,index) => {
             return (
-              <Card key={album.albumId} border='dark'>
+              <Card key={index} border='dark'>
          
                 <Card.Body>
                   <Card.Title>{album.title}</Card.Title>
