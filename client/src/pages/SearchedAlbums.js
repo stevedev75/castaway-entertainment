@@ -47,9 +47,9 @@ const SearchedAlbums = () => {
       // }
 
     const items = response.data.saveAlbum.savedAlbums;
-  console.log(items);
+
     const albumData = items.map((album) => ({
-     
+      albumId: album.id,
       title: album.title     
     }));
 
@@ -132,18 +132,17 @@ const SearchedAlbums = () => {
       <Container>
         <h2 className='text-center'>
           {searchedAlbums.length
-            ? `Viewing ${searchedAlbums.length} results:`
-            : 'Sign up or Sign In! Then pack some music to begin.'}
+            ? `You've packed ${searchedAlbums.length} pieces of music!`
+            : "Sign up or Sign In! Then pack some music to begin. You are headed on a trip, but you can only bring a tiny bit with you. Little do you know that soon you will be a castaway on a deserted island. Pack wisely - these are the only pieces of music you will be able to listen to via the island's magic technology."}
         </h2>
-        <h2> You are headed on a trip, but you can only bring a tiny bit with you. Little do you know that soon you will be a castaway on a deserted island. Pack wisely - these are the only pieces of music you will be able to listen to via the island's magic technology.</h2>
-        <CardColumns>
-          {searchedAlbums.map((album,index) => {
+      
+        {/* <CardColumns>
+          {searchedAlbums.map((album) => {
             return (
-              <Card key={index} border='dark'>
+              <Card key={album.albumId} border='dark'>
          
                 <Card.Body>
                   <Card.Title>{album.title}</Card.Title>
-                  <p className='small'>Title: {album.title}</p>
 
                   {Auth.loggedIn() && (
                     <Button
@@ -151,15 +150,15 @@ const SearchedAlbums = () => {
                       className='btn-block btn-info'
                       onClick={() => handleSaveAlbum(album.albumId)}>
                       {savedAlbumIds?.some((savedAlbumId) => savedAlbumId === album.albumId)
-                        ? 'This album has already been saved!'
-                        : 'Save this album!'}
+                        ? 'This music has already been packed!'
+                        : 'Pack this album!'}
                     </Button>
                   )}
                 </Card.Body>
               </Card>
             );
           })}
-        </CardColumns>
+        </CardColumns> */}
       </Container>
     </>
   );
