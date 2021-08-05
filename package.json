@@ -23,7 +23,8 @@
     "dependencies": {
         "graphql": "^15.5.1",
         "if-env": "^1.0.4",
-        "styled-components": "^5.3.0"
+        "styled-components": "^5.3.0",
+        "uuid": "^8.3.2"
     },
     "devDependencies": {
         "concurrently": "^5.2.0"
