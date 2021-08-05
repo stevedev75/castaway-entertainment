@@ -26,7 +26,7 @@ const AppNavbar = () => {
               {Auth.loggedIn() ? (
                 <>
                   <Nav.Link as={Link} to='/saved'>
-                    Saved Music
+                    Packed Music
                   </Nav.Link>
                   <Nav.Link onClick={Auth.logout}>Sign out</Nav.Link>
                 </>
