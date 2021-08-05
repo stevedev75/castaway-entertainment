@@ -11,7 +11,7 @@ import Auth from '../utils/auth';
 
 const SearchedAlbums = () => {
   const [searchedAlbums, setSearchedAlbums] = useState([]);
- 
+
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
 
@@ -20,7 +20,7 @@ const SearchedAlbums = () => {
 
   const [saveAlbum, { error }] = useMutation(SAVE_ALBUM)
 
- 
+
   useEffect(() => {
     return () => saveAlbumIds(savedAlbumIds);
   });
@@ -29,36 +29,38 @@ const SearchedAlbums = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    
+
     if (!searchInput) {
       return false;
     }
 
-    try {
-    const options = { variables: {title: searchInput, albumId: '1'} }
-    console.log(options);
+let figure = Math.floor((Math.random()*10000000)+1)
+    
+try {
+      const options = { variables: { title: searchInput, albumId: figure.toString() } }
+      console.log(options);
 
-    const response = await saveAlbum(options);
-  
-    console.log(response);
+      const response = await saveAlbum(options);
+
+      console.log(response);
 
       // if (!response.ok) {
       //   throw new Error('something went wrong!');
       // }
 
-    const items = response.data.saveAlbum.savedAlbums;
+      const items = response.data.saveAlbum.savedAlbums;
 
-    const albumData = items.map((album) => ({
-      albumId: album.id,
-      title: album.title     
-    }));
+      const albumData = items.map((album) => ({
+        albumId: album.id,
+        title: album.title
+      }));
 
-    setSearchedAlbums(albumData);
-    setSearchInput('');
-  } catch (err) {
-    console.error(err);
-  }
-};
+      setSearchedAlbums(albumData);
+      setSearchInput('');
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
 
 
@@ -80,7 +82,7 @@ const SearchedAlbums = () => {
     }
 
     try {
-      const { data }= await saveAlbum({
+      const { data } = await saveAlbum({
         variables: { input: albumToSave }
       });
 
@@ -90,7 +92,7 @@ const SearchedAlbums = () => {
       console.log("Album:", data)
       // if album successfully saves to user's account, save album id to state
       setSavedAlbumIds([...savedAlbumIds, albumToSave.albumId]);
-    } 
+    }
     catch (err) {
       console.error(err);
     }
@@ -100,14 +102,14 @@ const SearchedAlbums = () => {
     <>
       <Jumbotron fluid className='text-light bg-light'>
         <Container className="text-center"
-          style={{backgroundColor: '#D5DBDB', borderColor: '#45A293', color: '#000000'}}>
+          style={{ backgroundColor: '#D5DBDB', borderColor: '#45A293', color: '#000000' }}>
           <h1>CASTAWAY ENTERTAINMENT</h1>
           <h2>Pack Your Top Music!</h2>
-          
-          <Form  onSubmit={handleFormSubmit}>
+
+          <Form onSubmit={handleFormSubmit}>
             <Form.Row>
               <Col xs={12} md={12}>
-                <Form.Control 
+                <Form.Control
                   name='searchInput'
                   value={searchInput}
                   onChange={(e) => setSearchInput(e.target.value)}
@@ -119,7 +121,7 @@ const SearchedAlbums = () => {
               </Col>
               <Col xs={12} md={12}>
                 <Button type='submit' variant='success' size='lg'
-                style={{backgroundColor: '#2acaea', borderColor: '#45A293', color: '#000000'}}>
+                  style={{ backgroundColor: '#2acaea', borderColor: '#45A293', color: '#000000' }}>
                   Pack
                 </Button>
               </Col>
@@ -132,12 +134,13 @@ const SearchedAlbums = () => {
       <Container>
         <h2 className='text-center'>
           {searchedAlbums.length
-          
+
             ? `You've packed ${searchedAlbums.length} ${searchedAlbums.length === 1 ? 'selection of music' : 'selections of music'}.`
             : "Sign up or Sign In! Then pack some music to begin. You are headed on a trip, but you can only bring a tiny bit with you. Little do you know that soon you will be a castaway on a deserted island. Pack wisely - these are the only pieces of music you will be able to listen to via the island's magic technology."}
         </h2>
-      
+
         {/* <CardColumns>
+
           {searchedAlbums.map((album) => {
             return (
               <Card key={album.albumId} border='dark'>
@@ -164,4 +167,4 @@ const SearchedAlbums = () => {
     </>
   );
 };
-export default SearchedAlbums; 
+export default SearchedAlbums;
