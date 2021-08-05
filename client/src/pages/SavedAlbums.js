@@ -43,7 +43,8 @@ const SavedAlbums = () => {
 
   return (
     <>
-        <Jumbotron fluid className='text-light bg-dark text-center'>
+        <Jumbotron fluid className='text-light bg-dark text-center'
+         style={{ backgroundColor: '#2acaea', borderColor: '#45A293', color: '#000000' }}>
         <Container>
           <h1>Here's What You've Got!</h1>
         </Container>
@@ -51,16 +52,17 @@ const SavedAlbums = () => {
       <Container>
         <h2 className="text-center">
           {userData.savedAlbums.length
-            ? `Viewing ${userData.savedAlbums.length} saved ${userData.savedAlbums.length === 1 ? 'piece of music' : 'pieces of music'}:`
-            : 'You have no saved music!'}
+            ? `Viewing ${userData.savedAlbums.length} packed ${userData.savedAlbums.length === 1 ? 'selection of music' : 'selections of music'}:`
+            : 'You have no packed music!'}
         </h2>
+        <br></br>
         <CardColumns>
           {userData.savedAlbums.map((album) => {
             return (
               <Card key={album.albumId} border='dark'>
        
                 <Card.Body>
-                  <Card.Title>{album.title}</Card.Title>
+                  <Card.Title className="text-center">{album.title}</Card.Title>
        
                   <Button className='btn-block btn-danger' onClick={() => handleDeleteAlbum(album.albumId)}>
                     Delete this music!
