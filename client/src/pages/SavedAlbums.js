@@ -8,7 +8,7 @@ import { GET_ME } from '../utils/queries';
 
 const SavedAlbums = () => {
 
-  const {loading, data} = useQuery(GET_ME);
+  const { loading, data } = useQuery(GET_ME);
   const userData = data?.me || {};
 
   const [removeAlbum, { error }] = useMutation(REMOVE_ALBUM);
@@ -43,8 +43,8 @@ const SavedAlbums = () => {
 
   return (
     <>
-        <Jumbotron fluid className='text-light bg-dark text-center'
-         style={{ backgroundColor: '#2acaea', borderColor: '#45A293', color: '#000000' }}>
+      <Jumbotron fluid className='text-light bg-dark text-center'
+        style={{ backgroundColor: '#2acaea', borderColor: '#45A293', color: '#000000' }}>
         <Container>
           <h1>Here's What You've Got!</h1>
         </Container>
@@ -60,10 +60,10 @@ const SavedAlbums = () => {
           {userData.savedAlbums.map((album) => {
             return (
               <Card key={album.albumId} border='dark'>
-       
+
                 <Card.Body>
                   <Card.Title className="text-center">{album.title}</Card.Title>
-       
+
                   <Button className='btn-block btn-danger' onClick={() => handleDeleteAlbum(album.albumId)}>
                     Delete this music!
                   </Button>
