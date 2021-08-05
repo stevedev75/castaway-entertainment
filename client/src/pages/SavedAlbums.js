@@ -45,14 +45,14 @@ const SavedAlbums = () => {
     <>
         <Jumbotron fluid className='text-light bg-dark text-center'>
         <Container>
-          <h1>Viewing saved albums!</h1>
+          <h1>Here's What You've Got!</h1>
         </Container>
       </Jumbotron>
       <Container>
         <h2 className="text-center">
           {userData.savedAlbums.length
-            ? `Viewing ${userData.savedAlbums.length} saved ${userData.savedAlbums.length === 1 ? 'album' : 'albums'}:`
-            : 'You have no saved albums!'}
+            ? `Viewing ${userData.savedAlbums.length} saved ${userData.savedAlbums.length === 1 ? 'piece of music' : 'pieces of music'}:`
+            : 'You have no saved music!'}
         </h2>
         <CardColumns>
           {userData.savedAlbums.map((album) => {
@@ -61,10 +61,9 @@ const SavedAlbums = () => {
        
                 <Card.Body>
                   <Card.Title>{album.title}</Card.Title>
-                  <p className='small'>Albums: {album.title}</p>
        
                   <Button className='btn-block btn-danger' onClick={() => handleDeleteAlbum(album.albumId)}>
-                    Delete this album!
+                    Delete this music!
                   </Button>
                 </Card.Body>
               </Card>
