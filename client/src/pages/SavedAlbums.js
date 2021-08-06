@@ -2,8 +2,10 @@ import React from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
 import Auth from '../utils/auth';
 import { removeAlbumId } from '../utils/localStorage';
+import { updateAlbum} from '../utils/localStorage';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { REMOVE_ALBUM } from '../utils/mutations';
+import { UPDATE_ALBUM } from '../utils/mutations';
 import { GET_ME } from '../utils/queries';
 
 const SavedAlbums = () => {
@@ -12,6 +14,7 @@ const SavedAlbums = () => {
   const userData = data?.me || {};
 
   const [removeAlbum, { error }] = useMutation(REMOVE_ALBUM);
+  const [updateAlbum] = useMutation(UPDATE_ALBUM);
 
   // create function that accepts the album's mongo _id value as param and deletes the album from the database
   const handleDeleteAlbum = async (albumId) => {
@@ -41,6 +44,37 @@ const SavedAlbums = () => {
     return <h2>LOADING...</h2>;
   }
 
+
+
+  // Create Update Code HERE//
+
+  const handleUpdateAlbum = async (title) => {
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+    try {
+      await updateAlbum({
+        variables: { title }
+      });
+
+      if (error) {
+        throw new Error('Oops! Something bad happened!');
+      }
+      // upon success, update album's title in localStorage
+      updateAlbum(title);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // if data isn't here yet, say so
+  if (loading) {
+    return <h2>LOADING...</h2>;
+  }
+  //____________________________________________________//
   return (
     <>
       <Jumbotron fluid className='text-light bg-dark text-center'
@@ -67,6 +101,12 @@ const SavedAlbums = () => {
                   <Button className='btn-block btn-danger' onClick={() => handleDeleteAlbum(album.albumId)}>
                     Delete this music!
                   </Button>
+
+                  <Button className='btn-block' onClick={() => handleUpdateAlbum(album.title)}>
+                    Update this music!
+                  </Button>
+
+
                 </Card.Body>
               </Card>
             );
