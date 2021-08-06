@@ -52,6 +52,27 @@ export const SAVE_ALBUM = gql`
   }
 `;
 
+
+// Create Update mutation //
+
+export const UPDATE_ALBUM = gql`
+  mutation updateAlbum($title: String!, $albumId: String!) {
+    updateAlbum(title: $title, albumId: $albumId ) {
+      _id
+      username
+      email
+      albumCount
+      savedAlbums {
+        _id
+        albumId
+        title
+      }
+    }
+  }
+`;
+
+
+
 export const REMOVE_ALBUM = gql`
   mutation removeAlbum($albumId: String!) {
     removeAlbum(albumId: $albumId) {
