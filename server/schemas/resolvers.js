@@ -51,6 +51,26 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+
+    // Add Update function //
+
+    updateAlbum: async (parent, input, {user}) => {
+      console.log(input);
+      if (user) {
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: user._id },
+          { $addToSet: { savedAlbums: input } },
+          { new: true, runValidators: true }
+        );
+    
+        return updatedUser;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    // ____________________________________________________//
+
+
     removeAlbum: async (parent, { albumId }, {user}) => {
         if (user) {
           const updatedUser = await User.findOneAndUpdate(
