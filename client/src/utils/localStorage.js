@@ -6,6 +6,18 @@ export const getSavedAlbumIds = () => {
   return savedAlbumIds;
 };
 
+// Create "Update" function //
+
+export const updateAlbum = () => {
+  const savedAlbumIds = localStorage.updateItem('saved_albums')
+    ? JSON.parse(localStorage.putItem('saved_albums'))
+    : [];
+
+  return savedAlbumIds;
+};
+
+// Asjust "Update" function ABOVE //
+
 export const saveAlbumIds = (albumIdArr) => {
   if (albumIdArr.length) {
     localStorage.setItem('saved_album', JSON.stringify(albumIdArr));
