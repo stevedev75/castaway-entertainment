@@ -27,6 +27,7 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!): Auth
         saveAlbum(title: String!, albumId: String!): User
         removeAlbum(albumId: String!): User
+        updateAlbum(title: String!): User
     }
 `;
 
