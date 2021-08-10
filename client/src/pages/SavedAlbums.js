@@ -1,8 +1,8 @@
 import React from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
 import Auth from '../utils/auth';
-import { removeAlbumId } from '../utils/localStorage';
-import { updateAlbum} from '../utils/localStorage';
+import { removeAlbumId, updateAlbum } from '../utils/localStorage';
+// import { updateAlbum } from '../utils/localStorage';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { REMOVE_ALBUM } from '../utils/mutations';
 import { UPDATE_ALBUM } from '../utils/mutations';
@@ -14,7 +14,7 @@ const SavedAlbums = () => {
   const userData = data?.me || {};
 
   const [removeAlbum, { error }] = useMutation(REMOVE_ALBUM);
-  const [updateAlbum] = useMutation(UPDATE_ALBUM);
+  const [updateAlbumTitle] = useMutation(UPDATE_ALBUM);
 
   // create function that accepts the album's mongo _id value as param and deletes the album from the database
   const handleDeleteAlbum = async (albumId) => {
@@ -48,7 +48,7 @@ const SavedAlbums = () => {
 
   // Create Update Code HERE//
 
-  const handleUpdateAlbum = async (title) => {
+  const handleUpdateAlbum = async (title, albumId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -56,8 +56,9 @@ const SavedAlbums = () => {
     }
 
     try {
-      await updateAlbum({
-        variables: { title }
+      await updateAlbumTitle({
+        // Fix line below!//
+        variables: { title: title, albumId: albumId }
       });
 
       if (error) {
@@ -102,17 +103,16 @@ const SavedAlbums = () => {
                     Delete this music!
                   </Button>
 
-                  <Button className='btn-block' onClick={() => handleUpdateAlbum(album.title)}>
+                  <Button className='btn-block' onClick={() => handleUpdateAlbum(album.title, album.albumId)}>
                     Update this music!
                   </Button>
-
-
                 </Card.Body>
               </Card>
-            );
+        );
           })}
         </CardColumns>
-      </Container>
+        
+    </Container>
     </>
   );
 };
