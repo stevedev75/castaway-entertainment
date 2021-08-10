@@ -50,4 +50,15 @@ export const getMe = (token) => {
     });
   };
   
+   // save album data for a logged in user
+   export const updateAlbum = (albumData, token) => {
+    return fetch(`/api/users/albums/${albumId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(albumData),
+    });
+  };
  
