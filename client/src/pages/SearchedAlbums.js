@@ -139,7 +139,7 @@ try {
           {searchedAlbums.length
 
             ? `You've packed ${searchedAlbums.length} ${searchedAlbums.length === 1 ? 'selection of music' : 'selections of music'}.`
-            : "Sign up or Sign In! Then pack some music to begin. You are headed on a trip, but you can only bring a tiny bit with you. Little do you know that soon you will be a castaway on a deserted island. Pack wisely - these are the only pieces of music you will be able to listen to via the island's magic technology."}
+            : "Sign up or Sign In! Then pack some music to begin. You are headed on a trip, but you can only bring a tiny bit. Little do you know that soon you will be a castaway on a deserted island. Pack wisely - this is the only music you will be able to listen to while you're stranded."}
         </h2>
 
         {/* <CardColumns>
