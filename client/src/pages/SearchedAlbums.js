@@ -100,9 +100,11 @@ try {
 
   return (
     <>
-      <Jumbotron fluid className='text-light bg-light'>
+      <Jumbotron fluid className='text-light bg-'
+     style={{ backgroundColor: '#2acaea', borderColor: '#7FB3D5', color: '#99999' }} >
         <Container className="text-center"
-          style={{ backgroundColor: '#D5DBDB', borderColor: '#45A293', color: '#000000' }}>
+          style={{ backgroundColor: '#2acaea', borderColor: '#7FB3D5', color: '#99999' }}>
+       
           <h1>CASTAWAY ENTERTAINMENT</h1>
           <h2>Pack Your Top Music!</h2>
 
@@ -115,13 +117,13 @@ try {
                   onChange={(e) => setSearchInput(e.target.value)}
                   type='text'
                   size='lg'
-                  placeholder='Abbey Road by The Beatles'
+                  placeholder='Abbey Road'
                 />
                 <br></br>
               </Col>
               <Col xs={12} md={12}>
                 <Button type='submit' variant='success' size='lg'
-                  style={{ backgroundColor: '#2acaea', borderColor: '#45A293', color: '#000000' }}>
+                  style={{ backgroundColor: '#2acaea', borderColor: '#000000', color: '#000000' }}>
                   Pack
                 </Button>
               </Col>
@@ -131,7 +133,8 @@ try {
       </Jumbotron>
 
 
-      <Container>
+      <Container>       
+       
         <h2 className='text-center'>
           {searchedAlbums.length
 
