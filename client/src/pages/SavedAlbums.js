@@ -98,7 +98,7 @@ const SavedAlbums = () => {
               <Card key={album.albumId} border='dark'>
 
                 <Card.Body>
-                  <Card.Title className="text-center">{album.title}</Card.Title>
+                  <Card.Title className="text-center">{album.title} </Card.Title>
 
                   <Button className='btn-block btn-danger' onClick={() => handleDeleteAlbum(album.albumId)}>
                     Delete
