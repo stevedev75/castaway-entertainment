@@ -78,13 +78,14 @@ const SavedAlbums = () => {
   //____________________________________________________//
   return (
     <>
-      <Jumbotron fluid className='text-light bg-dark text-center'
-        style={{ backgroundColor: '#2acaea', borderColor: '#45A293', color: '#000000' }}>
+      <Jumbotron fluid className='text-light  text-center'
+        style={{ backgroundColor: '#2acaea', borderColor: '#45A293', color: '#000000'}}>
         <Container>
           <h1>Here's What You've Got!</h1>
         </Container>
       </Jumbotron>
       <Container>
+        
         <h2 className="text-center">
           {userData.savedAlbums.length
             ? `Viewing ${userData.savedAlbums.length} packed ${userData.savedAlbums.length === 1 ? 'selection of music' : 'selections of music'}:`
@@ -100,18 +101,17 @@ const SavedAlbums = () => {
                   <Card.Title className="text-center">{album.title}</Card.Title>
 
                   <Button className='btn-block btn-danger' onClick={() => handleDeleteAlbum(album.albumId)}>
-                    Delete this music!
+                    Delete
                   </Button>
 
                   <Button className='btn-block' onClick={() => handleUpdateAlbum(album.title, album.albumId)}>
-                    Update this music!
+                    Update
                   </Button>
                 </Card.Body>
               </Card>
         );
           })}
         </CardColumns>
-        
     </Container>
     </>
   );
