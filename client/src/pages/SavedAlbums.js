@@ -75,6 +75,13 @@ const SavedAlbums = () => {
   if (loading) {
     return <h2>LOADING...</h2>;
   }
+
+  // PSEUDO CODE
+    // 1. Click on "Update" Button
+    // 2. New "window" or Card appears with Input bar and Pack Button
+    // 3. We enter updated information and click on the  Pack Button
+    // 4. New Window disappears / Original Card is updated with the new music info
+
   //____________________________________________________//
   return (
     <>
