@@ -29,7 +29,7 @@ const AppNavbar = () => {
                     Packed Music
                   </Nav.Link>
                   <Nav.Link as={Link} to='/'>
-                    PACK MORE
+                    PACK!
                   </Nav.Link>
                   <Nav.Link onClick={Auth.logout}>Sign out</Nav.Link>
                 </>
