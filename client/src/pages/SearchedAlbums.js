@@ -109,14 +109,16 @@ try {
           <h2>Pack Your Top Music!</h2>
 
           <Form onSubmit={handleFormSubmit}>
-            <Form.Row>
-              <Col xs={12} md={12}>
-                <Form.Control
+            <Form.Row >
+              <Col className ="col-6 mx-auto "xs={12} md={3} >
+              <Form.Control 
+                 
                   name='searchInput'
                   value={searchInput}
                   onChange={(e) => setSearchInput(e.target.value)}
                   type='text'
                   size='lg'
+                  className='text-center'
                   placeholder='Abbey Road'
                 />
                 <br></br>
@@ -135,11 +137,11 @@ try {
 
       <Container>       
        
-        <h2 className='text-center'>
+        <h2 className='text-center backgroundColor-tan'>
           {searchedAlbums.length
 
             ? `You've packed ${searchedAlbums.length} ${searchedAlbums.length === 1 ? 'selection of music' : 'selections of music'}.`
-            : "Sign up or Sign In! Then pack some music to begin. You are headed on a trip, but you can only bring a tiny bit. Little do you know that soon you will be a castaway on a deserted island. Pack wisely - this is the only music you will be able to listen to while you're stranded."}
+            : "Sign Up or Sign In! Then pack some music to begin. You are headed on a trip, but you can only bring a tiny bit. Little do you know that soon you'll be cast away to a desert. Pack wisely - this is the only music you'll be able to listen to while you're stranded."}
         </h2>
 
         {/* <CardColumns>
