@@ -33,7 +33,7 @@ const SavedAlbums = () => {
         throw new Error('Oops! Something bad happened!');
       }
       // upon success, remove album's id from localStorage
-      removeAlbumId(albumId);
+      // removeAlbumId(albumId);
     } catch (err) {
       console.error(err);
     }
@@ -65,7 +65,7 @@ const SavedAlbums = () => {
         throw new Error('Oops! Something bad happened!');
       }
       // upon success, update album's title in localStorage
-      updateAlbum(title);
+      // updateAlbum(title);
     } catch (err) {
       console.error(err);
     }
