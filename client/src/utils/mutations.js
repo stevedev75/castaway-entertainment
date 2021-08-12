@@ -63,7 +63,6 @@ export const UPDATE_ALBUM = gql`
       email
       albumCount
       savedAlbums {
-        _id
         albumId
         title
       }
