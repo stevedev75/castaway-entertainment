@@ -25,7 +25,7 @@ Results
 
 
 Please see the deployed application on Heroku:
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+https://safe-reaches-62510.herokuapp.com/
 
 Please see the link to my GitHub repository for the code:
 https://github.com/stevedev75/castaway-entertainment
