@@ -9,7 +9,7 @@ export const getSavedAlbumIds = () => {
 // Create "Update" function //
 
 export const updateAlbum = () => {
-  console.log("update album LS.js")
+ 
   const savedAlbumIds = localStorage.updateItem('saved_albums')
     ? JSON.parse(localStorage.putItem('saved_albums'))
     : [];

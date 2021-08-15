@@ -39,7 +39,7 @@ const resolvers = {
       return { token, user };
     },
     saveAlbum: async (parent, input, {user}) => {
-      console.log(input);
+     
       if (user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: user._id },
@@ -55,7 +55,7 @@ const resolvers = {
     // Add Update function //
 
     updateAlbum: async (parent, input, {user}) => {
-      console.log(input);
+      
       if (user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: user._id },

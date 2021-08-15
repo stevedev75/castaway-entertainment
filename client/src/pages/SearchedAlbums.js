@@ -38,11 +38,11 @@ let figure = Math.floor((Math.random()*10000000)+1)
     
 try {
       const options = { variables: { title: searchInput, albumId: figure.toString() } }
-      console.log(options);
+  
 
       const response = await saveAlbum(options);
 
-      console.log(response);
+
 
       // if (!response.ok) {
       //   throw new Error('something went wrong!');
@@ -70,10 +70,10 @@ try {
   // create function to handle saving an Album to our database
   const handleSaveAlbum = async (albumId) => {
     // find the album in `searchedAlbums` state by the matching id
-    console.log(albumId);
+    
 
     const albumToSave = searchedAlbums.find((album) => album.albumId === albumId);
-    console.log(albumToSave)
+    
     // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -89,7 +89,7 @@ try {
       if (error) {
         throw new Error('Oops! Something bad happened!');
       }
-      console.log("Album:", data)
+      
       // if album successfully saves to user's account, save album id to state
       setSavedAlbumIds([...savedAlbumIds, albumToSave.albumId]);
     }
